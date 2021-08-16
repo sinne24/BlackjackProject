@@ -1,7 +1,9 @@
 package com.skilldistillery.blackjack.players;
 
 import java.util.List;
+import java.util.Scanner;
 
+import com.skilldistillery.blackjack.app.BlackJackApp;
 import com.skilldistillery.blackjack.entities.*;
 
 public class Dealer extends Player {
@@ -60,6 +62,7 @@ public class Dealer extends Player {
 		
 		return playerValue;
 	}
+	
 	public int returnDealerValue() {
 		return dealerValue;
 		

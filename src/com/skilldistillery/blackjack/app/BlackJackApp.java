@@ -91,7 +91,8 @@ public class BlackJackApp {
 				if (!winnerDetermined) {
 					determineWinner (dealerValue, playerValue);
 				}
-			}
+			} 
+			
 			player.discardPlayHand();
 			dealer.discardPlayHand();
 			 // Is there enough in the deck to play again?
@@ -107,6 +108,7 @@ public class BlackJackApp {
 		}
 
 	}
+	
 	public void determineWinner (int dealerValue, int playerValue) {
 		
 		dealerValue = checkDealerValue(dealerValue);
@@ -121,7 +123,8 @@ public class BlackJackApp {
 		}else if(dealerValue < playerValue) {
 			System.out.println("Dealer's value is " + dealerValue + " " + player.getName() + " wins!");
 		}
-	}
+	} 
+	
 	public int checkDealerValue(int dealerValue) {
 		System.out.println("Dealer will now show their cards: ");
 		dealer.getPlayHand().showHand();
@@ -134,11 +137,11 @@ public class BlackJackApp {
 			
 		}
 		if (dealerValue >= 17){
-			System.out.println("Dealer must stand.");
+			System.out.println("Dealer's value is " + dealerValue + ", the dealer must stand.");
 		}
 		return dealerValue;
 		
-	}
+	} 
 	
 	public boolean hitOrStand(Scanner kb) {
 		boolean hit = false;
@@ -153,6 +156,6 @@ public class BlackJackApp {
 			System.out.println("You chose to staaaand.");
 		}
 		return hit;
-	}
+	} 
 
 }
