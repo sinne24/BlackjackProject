@@ -9,6 +9,7 @@ public class Dealer extends Player {
 	private Deck deck;
 	private Card card;
 	private Hand dealerHand;
+	private int dealerValue;
 
 	public Dealer(String name) {
 		super(name);
@@ -29,16 +30,40 @@ public class Dealer extends Player {
 		return card;
 
 	}
+	public int dealRound(Player player, int dealerValue, int playerValue, Card cardToShow) {
+		this.dealerValue = dealerValue;
+		System.out.println("****************** Deal **********************\n" + "");
+		cardToShow = dealCard();
+		player.addToPlayHand(cardToShow);
+		System.out.println("Player's first card: " + cardToShow.toString());
+		playerValue = cardToShow.getValue();
 
-	public void dealThisRound() {
-		card = deck.dealCard();
-		dealerHand.addToHand(card);
-		card = deck.dealCard();
-		dealerHand.addToHand(card);
-		dealerHand(dealerHand);
+		cardToShow = dealCard();
+		addToPlayHand(cardToShow);
+		System.out.println("Dealer's first card is face down.");
+		this.dealerValue = cardToShow.getValue();
 
+		cardToShow = dealCard();
+		player.addToPlayHand(cardToShow);
+		System.out.println("Player's second card: " + cardToShow.toString());
+		playerValue += cardToShow.getValue();
+
+		cardToShow = dealCard();
+		addToPlayHand(cardToShow);
+		this.dealerValue += cardToShow.getValue();
+		System.out.println("Dealer's second card: " + cardToShow.toString());
+		System.out.println("");
+
+		System.out.println("Dealer's hand is: one card face down and the " + cardToShow.toString() + ", valued at "
+				+ cardToShow.getValue());
+		System.out.println("Player's hand is: " + player.toString() + ", which totals up to " + playerValue);
+		
+		return playerValue;
 	}
-
+	public int returnDealerValue() {
+		return dealerValue;
+		
+	}
 	public void dealerHand(Hand hand) {
 		dealerHand = hand;
 	}

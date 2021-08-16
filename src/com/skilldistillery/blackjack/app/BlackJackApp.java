@@ -52,41 +52,15 @@ public class BlackJackApp {
 		System.out.println("Dealer will now deal cards!\n");
 		Deck deck = dealer.openNewDeck();
 		dealer.shuffleDeck(deck);
-
-		// Error check: deck check
-		// System.out.println(deck.toString());
+		
 		while(deck.checkDeckSize() > 10) {
-			System.out.println("****************** Deal **********************\n" + "");
-			
-			// Dealer begins dealing
-			Card cardToShow;
+			Card cardToShow = null;
 			int dealerValue = 0;
 			int playerValue = 0;
 			
-			cardToShow = dealer.dealCard();
-			player.addToPlayHand(cardToShow);
-			System.out.println("Player's first card: " + cardToShow.toString());
-			playerValue = cardToShow.getValue();
-	
-			cardToShow = dealer.dealCard();
-			dealer.addToPlayHand(cardToShow);
-			System.out.println("Dealer's first card is face down.");
-			dealerValue = cardToShow.getValue();
-	
-			cardToShow = dealer.dealCard();
-			player.addToPlayHand(cardToShow);
-			System.out.println("Player's second card: " + cardToShow.toString());
-			playerValue += cardToShow.getValue();
-	
-			cardToShow = dealer.dealCard();
-			dealer.addToPlayHand(cardToShow);
-			dealerValue += cardToShow.getValue();
-			System.out.println("Dealer's second card: " + cardToShow.toString());
-			System.out.println("");
-	
-			System.out.println("Dealer's hand is: one card face down and the " + cardToShow.toString() + ", valued at "
-					+ cardToShow.getValue());
-			System.out.println("Player's hand is: " + player.toString() + ", which totals up to " + playerValue);
+			//Dealer deals the round
+			playerValue = dealer.dealRound(player, dealerValue, playerValue, cardToShow);
+			dealerValue = dealer.returnDealerValue();
 			
 			//Determine hit, stand, win, lose
 			boolean winnerDetermined = false;
@@ -126,7 +100,8 @@ public class BlackJackApp {
 			}
 			else {
 				System.out.println("This deck is out of cards. Game Over. "
-						+ "You can choose to play again with a fresh deck!");
+						+ "You can choose to play again with a fresh deck! "
+						+ "Hit enter to start a new game or quit!");
 				break;
 			}
 		}
