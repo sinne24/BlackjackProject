@@ -118,11 +118,15 @@ public class BlackJackApp {
 					determineWinner (dealerValue, playerValue);
 				}
 			}
+			player.discardPlayHand();
+			dealer.discardPlayHand();
 			 // Is there enough in the deck to play again?
-			if(deck.checkDeckSize() > 5) {
+			if(deck.checkDeckSize() > 10) {
 				System.out.println("Next Round!");
 			}
 			else {
+				System.out.println("This deck is out of cards. Game Over. "
+						+ "You can choose to play again with a fresh deck!");
 				break;
 			}
 		}

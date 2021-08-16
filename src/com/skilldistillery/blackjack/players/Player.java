@@ -24,6 +24,9 @@ public class Player{
 	public void addToPlayHand(Card card) {
 		this.playHand.addToHand(card);
 	}
+	public void discardPlayHand() {
+		this.playHand.discardPlayHand();
+	}
 	@Override
 	public String toString() {
 		return "" + playHand.toString();

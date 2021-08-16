@@ -15,6 +15,9 @@ public class Hand {
 	public void addToHand(Card card) {
 		cardsInHand.add(card);
 	}
+	public void discardPlayHand() {
+		cardsInHand.removeAll(cardsInHand);
+	}
 	public void showHand() {
 		for (Card card : cardsInHand) {
 			System.out.println(card.toString());
